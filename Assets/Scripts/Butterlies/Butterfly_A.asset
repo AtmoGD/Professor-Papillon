@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953435d8f6475b946bfda0df187ee4c9, type: 3}
+  m_Name: Butterfly_A
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: A
+  <Prefab>k__BackingField: {fileID: 0}
+  <Likes>k__BackingField:
+  - <Plants>k__BackingField:
+    - {fileID: 11400000, guid: 1d7f463f1930df04eb7b8157ad2c2012, type: 2}
+  - <Plants>k__BackingField:
+    - {fileID: 11400000, guid: bed77c8903e0899459c0298a996361c4, type: 2}
+  - <Plants>k__BackingField:
+    - {fileID: 11400000, guid: 3ac3ea14c7c7d3941b5887d63453855b, type: 2}
+    - {fileID: 11400000, guid: df18828ec75edc24787c78ca70f7d23e, type: 2}
