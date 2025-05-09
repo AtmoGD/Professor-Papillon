@@ -8,6 +8,11 @@ public class CameraController : MonoBehaviour
     [field: SerializeField] public Transform InnerCameraHolder { get; private set; }
     [field: SerializeField] public Transform CameraHolder { get; private set; } = null;
 
+    [field: Header("Start Position")]
+    [field: SerializeField] public float StartRotation { get; private set; } = 0f;
+    [field: SerializeField] public float StartHeight { get; private set; } = 0f;
+    [field: SerializeField] public float StartZoom { get; private set; } = 0f;
+
     [field: Header("Rotation")]
     [field: SerializeField] public float RotationSpeed { get; private set; } = 5f;
     [field: SerializeField] public float RotationLerpSpeed { get; private set; } = 5f;
@@ -59,13 +64,13 @@ public class CameraController : MonoBehaviour
     private void SetStartValues()
     {
         currentAngle = OuterCameraHolder.localEulerAngles.y;
-        targetAngle = currentAngle;
+        targetAngle = StartRotation;
 
         currentHeight = InnerCameraHolder.localEulerAngles.x;
-        targetHeight = currentHeight;
+        targetHeight = StartHeight;
 
         currentZoom = CameraHolder.localScale.x;
-        targetZoom = currentZoom;
+        targetZoom = StartZoom;
     }
 
     private void UpdateTargets()

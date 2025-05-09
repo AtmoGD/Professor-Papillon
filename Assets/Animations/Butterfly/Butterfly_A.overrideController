@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Butterfly_A
+  m_Controller: {fileID: 9100000, guid: da80acc14c2c7614dbfa6f0e74377a18, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 9212764638230694415, guid: 6c98ba90cea27684e90fe0ed23f53788, type: 3}
+    m_OverrideClip: {fileID: 9212764638230694415, guid: 6c98ba90cea27684e90fe0ed23f53788, type: 3}

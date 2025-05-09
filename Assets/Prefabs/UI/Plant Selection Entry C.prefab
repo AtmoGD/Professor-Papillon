@@ -10,8 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3325550735382645263, guid: 9dbb465e984d387418a14acaf2f19c05, type: 3}
       propertyPath: m_Name
-      value: Plant Selection Entry C Variant
+      value: Plant Selection Entry C
       objectReference: {fileID: 0}
+    - target: {fileID: 3834269839299879233, guid: 9dbb465e984d387418a14acaf2f19c05, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 380892731f460d7439353d08469b5bb4, type: 2}
     - target: {fileID: 7338424620013158285, guid: 9dbb465e984d387418a14acaf2f19c05, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

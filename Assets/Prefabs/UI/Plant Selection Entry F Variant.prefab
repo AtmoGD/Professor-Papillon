@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant Selection Entry F Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3834269839299879233, guid: 9dbb465e984d387418a14acaf2f19c05, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 3196d233fd6af86459655ee8c04535a8, type: 2}
     - target: {fileID: 7338424620013158285, guid: 9dbb465e984d387418a14acaf2f19c05, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
