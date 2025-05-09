@@ -6,8 +6,9 @@ public class InputController : MonoBehaviour
     [field: Header("Debug")]
     [field: SerializeField] public bool LeftClick { get; private set; } = false;
     [field: SerializeField] public bool RightClick { get; private set; } = false;
-    [field: SerializeField] public Vector2 RightClickStart { get; private set; } = Vector2.zero;
     [field: SerializeField] public bool MiddleClick { get; private set; } = false;
+    [field: SerializeField] public bool ShiftClick { get; private set; } = false;
+    [field: SerializeField] public Vector2 RightClickStart { get; private set; } = Vector2.zero;
     [field: SerializeField] public Vector2 MiddleClickStart { get; private set; } = Vector2.zero;
     [field: SerializeField] public Vector2 MoveDelta { get; private set; } = Vector2.zero;
     [field: SerializeField] public Vector2 MousePosition { get; private set; } = Vector2.zero;
@@ -48,6 +49,18 @@ public class InputController : MonoBehaviour
         else if (context.canceled)
         {
             MiddleClick = false;
+        }
+    }
+
+    public void OnShiftClick(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            ShiftClick = true;
+        }
+        else if (context.canceled)
+        {
+            ShiftClick = false;
         }
     }
 

@@ -34,6 +34,14 @@ public class CameraController : MonoBehaviour
     [field: SerializeField] public float ZoomLerpSpeed { get; private set; } = 5f;
     [field: SerializeField] public bool InvertZoom { get; private set; } = false;
 
+    [field: Header("Target Movement")]
+    [field: SerializeField] public float TargetMaxDistance { get; private set; } = 5f;
+    [field: SerializeField] public float TargetMovementSpeed { get; private set; } = 5f;
+    [field: SerializeField] public float TargetMovementLerpSpeed { get; private set; } = 5f;
+    [field: SerializeField] public float TargetMovementThreshold { get; private set; } = 0.1f;
+    [field: SerializeField] public bool InvertXTargetMovement { get; private set; } = false;
+    [field: SerializeField] public bool InvertYTargetMovement { get; private set; } = false;
+
 
     [field: Header("Debug")]
     [SerializeField] private float currentAngle;
@@ -42,20 +50,22 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float targetHeight;
     [SerializeField] private float currentZoom;
     [SerializeField] private float targetZoom;
+    [SerializeField] private Vector3 currentFocusPosition = Vector3.zero;
+    [SerializeField] private Vector3 targetFocusPosition = Vector3.zero;
 
-    private Transform cameraTransform;
+    private Transform cameraTransform = null;
 
     private void Start()
     {
-        cameraTransform = Game.Instance.MainCamera.transform;
+        cameraTransform = Game.Instance.MainCamera;
 
         SetStartValues();
     }
 
     private void Update()
     {
-        if (Game.Instance.CurrentState != GameState.Playing)
-            return;
+        // if (Game.Instance.CurrentState != GameState.Playing)
+        //     return;
 
         UpdateTargets();
         UpdateCurrent();
@@ -63,6 +73,9 @@ public class CameraController : MonoBehaviour
 
     private void SetStartValues()
     {
+        currentFocusPosition = OuterCameraHolder.localPosition;
+        targetFocusPosition = currentFocusPosition;
+
         currentAngle = OuterCameraHolder.localEulerAngles.y;
         targetAngle = StartRotation;
 
@@ -75,14 +88,34 @@ public class CameraController : MonoBehaviour
 
     private void UpdateTargets()
     {
-        if (Game.Instance.InputController.MiddleClick)
-            UpdateTargetRotation();
+        if (Game.Instance.InputController.ShiftClick && Game.Instance.InputController.MiddleClick)
+        {
+            UpdateTargetFocusPosition();
+        }
+        else
+        {
+            if (Game.Instance.InputController.MiddleClick)
+                UpdateTargetRotation();
 
-        if ((UserRightClickForHeight && Game.Instance.InputController.RightClick) || Game.Instance.InputController.MiddleClick)
-            UpdateTargetHeight();
+            if ((UserRightClickForHeight && Game.Instance.InputController.RightClick) || Game.Instance.InputController.MiddleClick)
+                UpdateTargetHeight();
+        }
 
         if (Game.Instance.InputController.MouseScroll != 0)
             UpdateTargetZoom();
+    }
+
+    private void UpdateTargetFocusPosition()
+    {
+        if (!IsOverRotationTheshold() && !IsOverHeightTheshold()) return;
+
+        // Calculate the new target Position based on the main camera right Vector3
+        Vector3 movement = Vector3.zero;
+        movement += cameraTransform.forward * Game.Instance.InputController.MoveDelta.y * (InvertYTargetMovement ? -1 : 1);
+        movement += cameraTransform.right * Game.Instance.InputController.MoveDelta.x * (InvertXTargetMovement ? -1 : 1);
+        targetFocusPosition += movement * TargetMovementSpeed;
+        targetFocusPosition.x = Mathf.Clamp(targetFocusPosition.x, -TargetMaxDistance, TargetMaxDistance);
+        targetFocusPosition.z = Mathf.Clamp(targetFocusPosition.z, -TargetMaxDistance, TargetMaxDistance);
     }
 
     private void UpdateTargetRotation()
@@ -118,6 +151,12 @@ public class CameraController : MonoBehaviour
 
     private void UpdateCurrent()
     {
+        currentFocusPosition = Vector3.Lerp(currentFocusPosition, targetFocusPosition, Time.deltaTime * TargetMovementLerpSpeed);
+        Vector3 newTargetPosition = OuterCameraHolder.localPosition;
+        newTargetPosition.x = currentFocusPosition.x;
+        newTargetPosition.z = currentFocusPosition.z;
+        OuterCameraHolder.localPosition = newTargetPosition;
+
         currentAngle = Mathf.Lerp(currentAngle, targetAngle, Time.deltaTime * RotationLerpSpeed);
         Vector3 outerAngles = OuterCameraHolder.localEulerAngles;
         outerAngles.y = currentAngle;

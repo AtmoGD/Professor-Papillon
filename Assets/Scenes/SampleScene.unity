@@ -317,7 +317,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e4c3c835db45c9d44b99c9ac9c9425f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e4c3c835db45c9d44b99c9ac9c9425f0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -325,7 +325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e4c3c835db45c9d44b99c9ac9c9425f0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e4c3c835db45c9d44b99c9ac9c9425f0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -625,8 +625,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <LeftClick>k__BackingField: 0
   <RightClick>k__BackingField: 0
-  <RightClickStart>k__BackingField: {x: 0, y: 0}
   <MiddleClick>k__BackingField: 0
+  <ShiftClick>k__BackingField: 0
+  <RightClickStart>k__BackingField: {x: 0, y: 0}
   <MiddleClickStart>k__BackingField: {x: 0, y: 0}
   <MoveDelta>k__BackingField: {x: 0, y: 0}
   <MousePosition>k__BackingField: {x: 0, y: 0}
@@ -811,6 +812,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 309dcc29-1702-4379-9479-a098dec2b0fb
     m_ActionName: 'Player/Mouse Wheel Click[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 364371338}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnShiftClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 76d17b35-e96e-4db6-b290-d27c9e45bcf3
+    m_ActionName: 'Player/Shift[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -871,29 +888,37 @@ MonoBehaviour:
   <InnerCameraHolder>k__BackingField: {fileID: 1914156776}
   <CameraHolder>k__BackingField: {fileID: 638860974}
   <StartRotation>k__BackingField: 0
-  <StartHeight>k__BackingField: 0
-  <StartZoom>k__BackingField: 0
-  <RotationSpeed>k__BackingField: 0.1
+  <StartHeight>k__BackingField: 45
+  <StartZoom>k__BackingField: 5
+  <RotationSpeed>k__BackingField: 0.3
   <RotationLerpSpeed>k__BackingField: 5
   <RotationThreshold>k__BackingField: 5
   <MinHeight>k__BackingField: 15
   <MaxHeight>k__BackingField: 90
-  <HeightSpeed>k__BackingField: 0.1
+  <HeightSpeed>k__BackingField: 0.15
   <HeightLerpSpeed>k__BackingField: 5
   <HeightThreshold>k__BackingField: 5
   <InvertY>k__BackingField: 1
   <UserRightClickForHeight>k__BackingField: 0
-  <MinZoom>k__BackingField: 2
+  <MinZoom>k__BackingField: 0.5
   <MaxZoom>k__BackingField: 20
-  <ZoomSpeed>k__BackingField: 0.1
+  <ZoomSpeed>k__BackingField: 0.5
   <ZoomLerpSpeed>k__BackingField: 50
   <InvertZoom>k__BackingField: 1
-  currentAngle: -426.44977
-  targetAngle: -426.44986
-  currentHeight: 29.10001
-  targetHeight: 29.100004
-  currentZoom: 1.7000008
-  targetZoom: 1.7000008
+  <TargetMaxDistance>k__BackingField: 10
+  <TargetMovementSpeed>k__BackingField: 0.01
+  <TargetMovementLerpSpeed>k__BackingField: 5
+  <TargetMovementThreshold>k__BackingField: 5
+  <InvertXTargetMovement>k__BackingField: 1
+  <InvertYTargetMovement>k__BackingField: 1
+  currentAngle: 603.4002
+  targetAngle: 603.4003
+  currentHeight: 24.700048
+  targetHeight: 24.700052
+  currentZoom: 2
+  targetZoom: 2
+  currentFocusPosition: {x: 23.480354, y: 4.0893655, z: -18.308014}
+  targetFocusPosition: {x: 23.48035, y: 4.0893645, z: -18.30801}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -4718,7 +4743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e527b7261bc51494dae1669e97c8f5c5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e527b7261bc51494dae1669e97c8f5c5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4726,7 +4751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e527b7261bc51494dae1669e97c8f5c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e527b7261bc51494dae1669e97c8f5c5, type: 3}
       propertyPath: m_LocalRotation.w
