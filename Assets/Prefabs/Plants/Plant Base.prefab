@@ -134,12 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Data>k__BackingField: {fileID: 0}
-  <Animator>k__BackingField: {fileID: 0}
-  <PlacementCollider>k__BackingField: {fileID: 6459819612961897490}
-  <IsCollidingWithOtherPlants>k__BackingField: 0
-  <PlantLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 7
+  <Animator>k__BackingField: {fileID: 1175269045747879700}
 --- !u!136 &6459819612961897490
 CapsuleCollider:
   m_ObjectHideFlags: 0

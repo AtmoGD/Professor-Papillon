@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c098359f12d334caadc932267f0422, type: 3}
   m_Name: Plant_D
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: D
+  <Name>k__BackingField: Clematis
   <Prefab>k__BackingField: {fileID: 3161828046048749813, guid: 82c1359f25f2f3f4198b39aefb2046fc, type: 3}
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 813af3f4d9241ba4787d57d3ce3a6418, type: 3}
   <Dislikes>k__BackingField:
   - <Plants>k__BackingField:
     - {fileID: 11400000, guid: df18828ec75edc24787c78ca70f7d23e, type: 2}

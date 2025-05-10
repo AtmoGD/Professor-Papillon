@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c098359f12d334caadc932267f0422, type: 3}
   m_Name: Plant_B
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: B
+  <Name>k__BackingField: Magnolia
   <Prefab>k__BackingField: {fileID: 115130431446606484, guid: 0956220c5408bc1488028a06a39aa291, type: 3}
   <Icon>k__BackingField: {fileID: 0}
   <Dislikes>k__BackingField:

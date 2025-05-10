@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c098359f12d334caadc932267f0422, type: 3}
   m_Name: Plant_C
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: C
+  <Name>k__BackingField: Cosmea
   <Prefab>k__BackingField: {fileID: 6961188496375782219, guid: c1372ad1620bfa24aa71e32befb2a823, type: 3}
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 9a1f1beaea77e7646bc751c0a771d38f, type: 3}
   <Dislikes>k__BackingField:
   - <Plants>k__BackingField:
     - {fileID: 11400000, guid: 1d7f463f1930df04eb7b8157ad2c2012, type: 2}

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c098359f12d334caadc932267f0422, type: 3}
   m_Name: Plant_A
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: A
+  <Name>k__BackingField: Lilac
   <Prefab>k__BackingField: {fileID: 4221132260196548151, guid: 101ad941743e57741833c1ac3900d4ef, type: 3}
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: fbdb3475a7ce461418ca392b95310151, type: 3}
   <Dislikes>k__BackingField:
   - <Plants>k__BackingField:
     - {fileID: 11400000, guid: 4771e5dee04efd3419b3151b17197850, type: 2}
