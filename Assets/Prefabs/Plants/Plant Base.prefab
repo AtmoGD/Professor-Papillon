@@ -5041,7 +5041,8 @@ MonoBehaviour:
   <PlantLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
-  <Renderer>k__BackingField: {fileID: 6114540260606371597}
+  <Renderer>k__BackingField:
+  - {fileID: 6114540260606371597}
   <placmentIndicatorMaterial>k__BackingField: {fileID: 2100000, guid: 3d6cf396d147cb841bd8ae86ad835592, type: 2}
   <CheckWelkingInterval>k__BackingField: 4
   <BaseColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
