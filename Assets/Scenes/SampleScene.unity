@@ -1044,6 +1044,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f88d434c639803c478fe28c0048efc22, type: 2}
   <placmentIndicatorMaterial>k__BackingField: {fileID: 2100000, guid: 3d6cf396d147cb841bd8ae86ad835592, type: 2}
   <RotationSpeed>k__BackingField: 100
+  <PlacedTimeoutTime>k__BackingField: 0.8
   <ActivePlants>k__BackingField: []
   <ActiveCombinations>k__BackingField: []
   <ActiveButterflies>k__BackingField: []

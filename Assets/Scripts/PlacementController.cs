@@ -14,6 +14,7 @@ public class PlacementController : MonoBehaviour
 
     [field: SerializeField] public Material placmentIndicatorMaterial { get; private set; } = null;
     [field: SerializeField] public float RotationSpeed { get; private set; } = 1f;
+    [field: SerializeField] public float PlacedTimeoutTime { get; private set; } = 2.5f;
 
     public PlantData SelectedPlantData { get; private set; } = null;
     private PlantSelectionEntry currentPlantSelectionEntry = null;
@@ -25,10 +26,16 @@ public class PlacementController : MonoBehaviour
     private Plant placementIndicator = null;
     private float placementAngle = 0f;
 
+    private float justPlacedTimeout = 0.5f;
+
     [BurstCompile]
     private void Update()
     {
         if (Game.Instance.CurrentState != GameState.Playing)
+            return;
+
+        justPlacedTimeout -= Time.deltaTime;
+        if (justPlacedTimeout > 0)
             return;
 
         if (!currentPlantSelectionEntry)
@@ -58,6 +65,7 @@ public class PlacementController : MonoBehaviour
         {
             Game.Instance.InputController.ConsumeLeftClick();
             PlacePlant();
+            justPlacedTimeout = PlacedTimeoutTime;
         }
     }
 
@@ -273,6 +281,8 @@ public class PlacementController : MonoBehaviour
         });
 
         Game.Instance.UiController.UpdateJars();
+
+        placementAngle = UnityEngine.Random.Range(0f, 360f);
     }
 
     [BurstCompile]

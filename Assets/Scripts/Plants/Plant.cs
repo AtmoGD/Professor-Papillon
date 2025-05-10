@@ -17,6 +17,7 @@ public class Plant : MonoBehaviour
     [field: SerializeField] public Color BaseColor { get; private set; } = Color.white;
     [field: SerializeField] public Color WelkingColor { get; private set; } = Color.red;
     [field: SerializeField] public float WelkingSpeed { get; private set; } = 1f;
+    [field: SerializeField] public List<ParticleSystem> particleSystems { get; private set; } = new List<ParticleSystem>();
 
     private List<GameObject> currentCollisions = new List<GameObject>();
 
@@ -42,6 +43,15 @@ public class Plant : MonoBehaviour
             CheckWelking();
             if (isWelking || wasWelking)
                 UpdateWelking();
+        }
+    }
+
+    private void Start()
+    {
+        if (!IsPlacementIndicator && particleSystems.Count > 0)
+        {
+            foreach (var particleSystem in particleSystems)
+                particleSystem.Play();
         }
     }
 
@@ -127,7 +137,13 @@ public class Plant : MonoBehaviour
         Game.Instance.PlacementController.ActivePlants.Remove(this);
         Game.Instance.PlacementController.CheckCombinations();
 
-        Destroy(gameObject);
+        if (particleSystems.Count > 0)
+        {
+            foreach (var particleSystem in particleSystems)
+                particleSystem.Stop();
+        }
+
+        Destroy(gameObject, 2f);
     }
 
     public void SetIsPlacementIndicator()

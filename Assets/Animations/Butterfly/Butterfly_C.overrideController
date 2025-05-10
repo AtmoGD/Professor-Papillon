@@ -9,5 +9,5 @@ AnimatorOverrideController:
   m_Name: Butterfly_C
   m_Controller: {fileID: 9100000, guid: da80acc14c2c7614dbfa6f0e74377a18, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 525d7ef63c88f3142bd60947573d8f41, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9ba27c968f0e1774b85c7e0053b9266a, type: 2}
     m_OverrideClip: {fileID: 7261056918319053693, guid: 3e577808e620283469d39c743066a2bb, type: 3}
