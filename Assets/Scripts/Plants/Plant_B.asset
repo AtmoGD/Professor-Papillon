@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Magnolia
   <Prefab>k__BackingField: {fileID: 115130431446606484, guid: 0956220c5408bc1488028a06a39aa291, type: 3}
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 236ec38ded15ecf419bc98c9dc71a316, type: 3}
   <Dislikes>k__BackingField:
   - <Plants>k__BackingField:
     - {fileID: 11400000, guid: bed77c8903e0899459c0298a996361c4, type: 2}

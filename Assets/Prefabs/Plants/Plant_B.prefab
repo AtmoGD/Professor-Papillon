@@ -57,6 +57,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0683556d3153e1f4e9947860b1add784, type: 3}
+--- !u!23 &330776060688028820 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 0683556d3153e1f4e9947860b1add784, type: 3}
+  m_PrefabInstance: {fileID: 1393497615766767632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1503089362300874747 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0683556d3153e1f4e9947860b1add784, type: 3}
@@ -74,6 +79,10 @@ PrefabInstance:
       propertyPath: <Data>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 4771e5dee04efd3419b3151b17197850, type: 2}
+    - target: {fileID: 2215970263236314588, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: <Renderer>k__BackingField
+      value: 
+      objectReference: {fileID: 330776060688028820}
     - target: {fileID: 4134570065998850045, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
       propertyPath: m_Name
       value: Plant_B

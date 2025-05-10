@@ -12,7 +12,7 @@ public class PlacementController : MonoBehaviour
     [field: SerializeField] public LayerMask PlantLayer { get; private set; } = 7;
     [field: SerializeField] public List<ButterflyData> ButterflyDatas { get; private set; } = new List<ButterflyData>();
     [field: SerializeField] public float PlantNearRadius { get; private set; } = 4f;
-    [field: SerializeField] public PlacementIndicator PlacementIndicatorPrefab { get; private set; } = null;
+    [field: SerializeField] public Material placmentIndicatorMaterial { get; private set; } = null;
 
 
     public PlantData SelectedPlantData { get; private set; } = null;
@@ -22,7 +22,7 @@ public class PlacementController : MonoBehaviour
     [field: SerializeField] public List<ActiveCombination> ActiveCombinations { get; set; } = new List<ActiveCombination>();
     [field: SerializeField] public List<Butterfly> ActiveButterflies { get; set; } = new List<Butterfly>();
 
-    private PlacementIndicator placementIndicator = null;
+    private Plant placementIndicator = null;
 
     [BurstCompile]
     private void Update()
@@ -37,11 +37,13 @@ public class PlacementController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, GroundLayer))
         {
             if (placementIndicator == null)
-                placementIndicator = Instantiate(PlacementIndicatorPrefab).GetComponent<PlacementIndicator>();
+            {
+                placementIndicator = Instantiate(SelectedPlantData.Prefab).GetComponent<Plant>();
+                placementIndicator.SetIsPlacementIndicator();
+            }
 
             placementIndicator.transform.position = hit.point;
             placementIndicator.transform.eulerAngles = hit.normal;
-            placementIndicator.CheckCollisions();
 
         }
         else if (placementIndicator != null)
@@ -92,7 +94,7 @@ public class PlacementController : MonoBehaviour
             colliderInReach.ForEach(collider =>
             {
                 Plant otherPlant = collider.GetComponent<Plant>();
-                if (otherPlant != plantToCheck && otherPlant != null && otherPlant != plantToCheck)
+                if (otherPlant != plantToCheck && otherPlant != null && otherPlant != plantToCheck && !otherPlant.IsPlacementIndicator)
                 {
                     plantsInReach.Add(otherPlant);
                 }
@@ -262,6 +264,12 @@ public class PlacementController : MonoBehaviour
         if (currentPlantSelectionEntry != null)
         {
             currentPlantSelectionEntry.OnDeselect();
+        }
+
+        if (currentPlantSelectionEntry == plantSelectionEntry)
+        {
+            currentPlantSelectionEntry = null;
+            return;
         }
 
         currentPlantSelectionEntry = plantSelectionEntry;

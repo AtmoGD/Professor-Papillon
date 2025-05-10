@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: <Data>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 1d7f463f1930df04eb7b8157ad2c2012, type: 2}
+    - target: {fileID: 2215970263236314588, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: <Renderer>k__BackingField
+      value: 
+      objectReference: {fileID: 5825233839187134223}
     - target: {fileID: 4134570065998850045, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
       propertyPath: m_Name
       value: Plant_A
@@ -130,5 +134,10 @@ PrefabInstance:
 --- !u!4 &4655683580096838752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5788bdb9f94aeeb47a506450d58089e4, type: 3}
+  m_PrefabInstance: {fileID: 5122553144969468811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5825233839187134223 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 5788bdb9f94aeeb47a506450d58089e4, type: 3}
   m_PrefabInstance: {fileID: 5122553144969468811}
   m_PrefabAsset: {fileID: 0}
