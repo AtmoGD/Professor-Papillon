@@ -13,10 +13,10 @@ public enum GameState
 [System.Serializable]
 public class ActiveCombination
 {
-    [SerializeField] public List<Transform> Plants = new List<Transform>();
+    [SerializeField] public List<Plant> Plants = new List<Plant>();
     [SerializeField] public List<Butterfly> Butterflies = new List<Butterfly>();
 
-    public void AddPlant(Transform plant)
+    public void AddPlant(Plant plant)
     {
         if (!Plants.Contains(plant))
             Plants.Add(plant);

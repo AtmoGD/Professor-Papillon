@@ -145,7 +145,7 @@ public class PlacementController : MonoBehaviour
                         {
                             plantsToAdd.ForEach(plantCheck =>
                             {
-                                if (!combination.Plants.Contains(plantCheck.transform))
+                                if (!combination.Plants.Contains(plantCheck))
                                 {
                                     isSamePlants = false;
                                 }
@@ -158,10 +158,10 @@ public class PlacementController : MonoBehaviour
                     if (!isCombinationAlreadyActive)
                     {
                         ActiveCombination activeCombination = new ActiveCombination();
-                        activeCombination.Plants = new List<Transform>();
+                        activeCombination.Plants = new List<Plant>();
                         plantsToAdd.ForEach(plantWhatEver =>
                         {
-                            activeCombination.AddPlant(plantWhatEver.transform); //TODO: HURENSOHN
+                            activeCombination.AddPlant(plantWhatEver);
                         });
                         activeCombination.Butterflies = new List<Butterfly>();
 
