@@ -271,6 +271,8 @@ public class PlacementController : MonoBehaviour
         {
             butterfly.ExitLevel();
         });
+
+        Game.Instance.UiController.UpdateJars();
     }
 
     [BurstCompile]

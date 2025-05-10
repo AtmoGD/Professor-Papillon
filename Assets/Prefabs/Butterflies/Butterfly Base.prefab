@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7673613407365715589}
   - component: {fileID: 8799715112921500598}
+  - component: {fileID: 1780861859487901969}
   m_Layer: 0
   m_Name: Butterfly Base
   m_TagString: Untagged
@@ -89,6 +90,28 @@ MonoBehaviour:
   - {x: -2.045874, y: 2.3732352, z: 0.6696835}
   - {x: -2.3315756, y: 2.205968, z: 1.0158682}
   - {x: -2.0163274, y: 2.1109285, z: 0.6170655}
+--- !u!95 &1780861859487901969
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871431134479096570}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da80acc14c2c7614dbfa6f0e74377a18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3243172303078455901
 GameObject:
   m_ObjectHideFlags: 0
