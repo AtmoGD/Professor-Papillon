@@ -665,6 +665,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2c29a11cbbb3d8a4a959e65ac9850b63, type: 2}
   - {fileID: 11400000, guid: f88d434c639803c478fe28c0048efc22, type: 2}
   <PlantNearRadius>k__BackingField: 4
+  <PlacementIndicatorPrefab>k__BackingField: {fileID: 6468550886769775201, guid: a300102aa170e8347889db811570fd8b, type: 3}
+  <ActivePlants>k__BackingField: []
+  <ActiveCombinations>k__BackingField: []
+  <ActiveButterflies>k__BackingField: []
 --- !u!114 &364371344
 MonoBehaviour:
   m_ObjectHideFlags: 0

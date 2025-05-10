@@ -5,27 +5,39 @@ using UnityEngine;
 [System.Serializable]
 public class Plant : MonoBehaviour
 {
-
     [field: Header("References")]
     [field: SerializeField] public PlantData Data { get; private set; } = null;
     [field: SerializeField] public Animator Animator { get; private set; } = null;
-    [field: SerializeField] public Collider PlacementCollider { get; private set; } = null;
-    [field: SerializeField] public bool IsCollidingWithOtherPlants { get; private set; } = false;
-    [field: SerializeField] public LayerMask PlantLayer { get; private set; } = 7;
+    // [field: SerializeField] public Collider PlacementCollider { get; private set; } = null;
+    // [field: SerializeField] public bool IsCollidingWithOtherPlants { get; private set; } = false;
+    // [field: SerializeField] public LayerMask PlantLayer { get; private set; } = 7;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    [field: SerializeField] public string ID { get; private set; } = "";
+
+    private void Awake()
     {
-        if (other.gameObject.layer == PlantLayer)
-        {
-            IsCollidingWithOtherPlants = true;
-        }
+        GenerateID();
+        Debug.Log($"Plant {name} has ID: {ID}");
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private void GenerateID()
     {
-        if (other.gameObject.layer == PlantLayer)
-        {
-            IsCollidingWithOtherPlants = false;
-        }
+        ID = System.Guid.NewGuid().ToString();
     }
+
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.gameObject.layer == PlantLayer)
+    //     {
+    //         IsCollidingWithOtherPlants = true;
+    //     }
+    // }
+
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.gameObject.layer == PlantLayer)
+    //     {
+    //         IsCollidingWithOtherPlants = false;
+    //     }
+    // }
 }
