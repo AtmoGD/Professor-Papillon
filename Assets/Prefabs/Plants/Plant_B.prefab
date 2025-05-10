@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant_B
       objectReference: {fileID: 0}
+    - target: {fileID: 6459819612961897490, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: m_Radius
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6905864975048385740, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -11,7 +11,7 @@ public class PlacementController : MonoBehaviour
     [field: SerializeField] public LayerMask GroundLayer { get; private set; } = 6;
     [field: SerializeField] public LayerMask PlantLayer { get; private set; } = 7;
     [field: SerializeField] public List<ButterflyData> ButterflyDatas { get; private set; } = new List<ButterflyData>();
-    [field: SerializeField] public float PlantNearRadius { get; private set; } = 4f;
+
     [field: SerializeField] public Material placmentIndicatorMaterial { get; private set; } = null;
     [field: SerializeField] public float RotationSpeed { get; private set; } = 1f;
 
@@ -93,11 +93,11 @@ public class PlacementController : MonoBehaviour
         Destroy(placementIndicator.gameObject);
         placementIndicator = null;
 
-        ImprovedCheckCombinations();
+        CheckCombinations();
     }
 
     [BurstCompile]
-    private void ImprovedCheckCombinations()
+    public void CheckCombinations()
     {
         List<Butterfly> butterfliesToAdd = new List<Butterfly>(ActiveButterflies);
         ActiveButterflies.Clear();
@@ -109,7 +109,7 @@ public class PlacementController : MonoBehaviour
         ActivePlants.ForEach((plantToCheck) =>
         {
             List<Plant> plantsInReach = new List<Plant>();
-            List<Collider> colliderInReach = new List<Collider>(Physics.OverlapSphere(plantToCheck.transform.position, PlantNearRadius, PlantLayer));
+            List<Collider> colliderInReach = new List<Collider>(Physics.OverlapSphere(plantToCheck.transform.position, Game.Instance.PlantNearRadius, PlantLayer));
 
             colliderInReach.ForEach(collider =>
             {
@@ -305,7 +305,7 @@ public class PlacementController : MonoBehaviour
         if (placementIndicator != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(placementIndicator.transform.position, PlantNearRadius);
+            Gizmos.DrawWireSphere(placementIndicator.transform.position, Game.Instance.PlantNearRadius);
         }
     }
 }

@@ -60,12 +60,14 @@ MonoBehaviour:
   <RandomSpeedIntervallMax>k__BackingField: 1
   <RotationSpeed>k__BackingField: 5
   <AnimationSpeed>k__BackingField: 2
+  <AnimationSpeedMin>k__BackingField: 1
+  <AnimationSpeedMax>k__BackingField: 4
   <noiseScale>k__BackingField: 3
-  <LevelMinRadius>k__BackingField: 10
-  <LevelMaxRadius>k__BackingField: 15
+  <LevelMinRadius>k__BackingField: 20
+  <LevelMaxRadius>k__BackingField: 35
   <LevelMinHeight>k__BackingField: 0.1
   <LevelMaxHeight>k__BackingField: 3
-  <FadeOutBeforeDestroy>k__BackingField: 3
+  <FadeOutBeforeDestroy>k__BackingField: 5
   parentPlants: []
   _path:
   - {x: -0.5188738, y: 2.4440982, z: 0.6413593}

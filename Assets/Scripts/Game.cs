@@ -39,6 +39,8 @@ public class Game : MonoBehaviour
     [field: SerializeField] public PlacementController PlacementController { get; private set; } = null;
     [field: SerializeField] public ScreenshotController ScreenshotController { get; private set; } = null;
 
+    [field: SerializeField] public float PlantNearRadius { get; private set; } = 4f;
+
     private void Awake()
     {
         if (Instance)

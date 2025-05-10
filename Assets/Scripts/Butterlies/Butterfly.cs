@@ -128,7 +128,7 @@ public class Butterfly : MonoBehaviour
         Vector3 targetDirection = currentTarget - transform.position;
         targetDirection.y = 0;
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-        Quaternion rotationOffset = Quaternion.Euler(0, 180, 0);
+        Quaternion rotationOffset = Quaternion.Euler(0, 0, 0);
         ModelHolder.rotation = Quaternion.Slerp(ModelHolder.rotation, targetRotation * rotationOffset, Time.deltaTime * RotationSpeed);
     }
 
@@ -220,6 +220,9 @@ public class Butterfly : MonoBehaviour
 
             distanceToTarget = Vector3.Distance(lastPosition, _targetPosition);
         }
+
+        if (_path.Count == 0)
+            return;
 
         currentTarget = _path[0];
     }
