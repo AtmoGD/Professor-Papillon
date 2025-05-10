@@ -747,6 +747,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f88d434c639803c478fe28c0048efc22, type: 2}
   <PlantNearRadius>k__BackingField: 4
   <placmentIndicatorMaterial>k__BackingField: {fileID: 2100000, guid: 3d6cf396d147cb841bd8ae86ad835592, type: 2}
+  <RotationSpeed>k__BackingField: 100
   <ActivePlants>k__BackingField: []
   <ActiveCombinations>k__BackingField: []
   <ActiveButterflies>k__BackingField: []
@@ -795,8 +796,8 @@ MonoBehaviour:
   <ZoomLerpSpeed>k__BackingField: 50
   <InvertZoom>k__BackingField: 1
   <TargetMaxDistance>k__BackingField: 10
-  <TargetMovementSpeed>k__BackingField: 0.01
-  <TargetMovementLerpSpeed>k__BackingField: 5
+  <TargetMovementSpeed>k__BackingField: 0.05
+  <TargetMovementLerpSpeed>k__BackingField: 3
   <TargetMovementThreshold>k__BackingField: 5
   <InvertXTargetMovement>k__BackingField: 1
   <InvertYTargetMovement>k__BackingField: 1

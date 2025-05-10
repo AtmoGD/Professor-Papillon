@@ -13,7 +13,7 @@ public class PlacementController : MonoBehaviour
     [field: SerializeField] public List<ButterflyData> ButterflyDatas { get; private set; } = new List<ButterflyData>();
     [field: SerializeField] public float PlantNearRadius { get; private set; } = 4f;
     [field: SerializeField] public Material placmentIndicatorMaterial { get; private set; } = null;
-
+    [field: SerializeField] public float RotationSpeed { get; private set; } = 1f;
 
     public PlantData SelectedPlantData { get; private set; } = null;
     private PlantSelectionEntry currentPlantSelectionEntry = null;
@@ -23,6 +23,7 @@ public class PlacementController : MonoBehaviour
     [field: SerializeField] public List<Butterfly> ActiveButterflies { get; set; } = new List<Butterfly>();
 
     private Plant placementIndicator = null;
+    private float placementAngle = 0f;
 
     [BurstCompile]
     private void Update()
@@ -32,6 +33,8 @@ public class PlacementController : MonoBehaviour
 
         if (!currentPlantSelectionEntry)
             return;
+
+        UpdateRotation();
 
         Ray ray = Game.Instance.MainCamera.ScreenPointToRay(Game.Instance.InputController.MousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 1000, GroundLayer))
@@ -43,7 +46,7 @@ public class PlacementController : MonoBehaviour
             }
 
             placementIndicator.transform.position = hit.point;
-            placementIndicator.transform.eulerAngles = hit.normal;
+            placementIndicator.transform.rotation = RotateAroundNormal(hit.normal);
 
         }
         else if (placementIndicator != null)
@@ -56,6 +59,23 @@ public class PlacementController : MonoBehaviour
             Game.Instance.InputController.ConsumeLeftClick();
             PlacePlant();
         }
+    }
+
+    private void UpdateRotation()
+    {
+        if (Game.Instance.InputController.ShiftClick)
+        {
+            placementAngle += RotationSpeed * Time.deltaTime * Game.Instance.InputController.MouseScroll;
+            if (placementAngle > 360f)
+                placementAngle -= 360f;
+        }
+    }
+
+    private Quaternion RotateAroundNormal(Vector3 normal)
+    {
+        Quaternion alignment = Quaternion.FromToRotation(Vector3.up, normal);
+        Quaternion rotationAroundNormal = Quaternion.AngleAxis(placementAngle, normal);
+        return alignment * rotationAroundNormal;
     }
 
     [BurstCompile]

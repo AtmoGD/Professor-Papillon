@@ -25,15 +25,6 @@ public class Plant : MonoBehaviour
         if (IsPlacementIndicator)
         {
             Materials.ForEach(material => material.SetInt("_Error", IsCollidingWithOtherPlants ? 1 : 0));
-
-            if (IsCollidingWithOtherPlants)
-            {
-                Debug.Log("Colliding with other plants");
-            }
-            else
-            {
-                Debug.Log("Not colliding with other plants");
-            }
         }
     }
 

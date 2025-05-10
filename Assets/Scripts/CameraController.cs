@@ -95,7 +95,7 @@ public class CameraController : MonoBehaviour
             UpdateTargetHeight();
         }
 
-        if (Game.Instance.InputController.MouseScroll != 0)
+        if (Game.Instance.InputController.MouseScroll != 0 && !Game.Instance.InputController.ShiftClick)
             UpdateTargetZoom();
     }
 
