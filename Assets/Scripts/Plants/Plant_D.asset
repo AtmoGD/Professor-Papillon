@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Plant_D
   m_EditorClassIdentifier: 
   <Name>k__BackingField: D
-  <Prefab>k__BackingField: {fileID: 0}
+  <Prefab>k__BackingField: {fileID: 3161828046048749813, guid: 82c1359f25f2f3f4198b39aefb2046fc, type: 3}
+  <Icon>k__BackingField: {fileID: 0}
   <Dislikes>k__BackingField:
   - <Plants>k__BackingField:
     - {fileID: 11400000, guid: df18828ec75edc24787c78ca70f7d23e, type: 2}

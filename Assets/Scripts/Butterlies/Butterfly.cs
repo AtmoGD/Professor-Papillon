@@ -21,16 +21,13 @@ public class Butterfly : MonoBehaviour
     [field: SerializeField] public float AnimationSpeed { get; private set; } = 1f;
     [field: SerializeField] public float noiseScale { get; private set; } = 1f;
 
-
-    [SerializeField] public ActiveCombination activeCombination = null;
-
-
+    [SerializeField] private List<Plant> parentPlants = new List<Plant>();
     private Vector3 _targetPosition = Vector3.zero;
     [SerializeField] private List<Vector3> _path = new List<Vector3>();
 
     private void Start()
     {
-        if (activeCombination == null)
+        if (parentPlants.Count == 0)
             return;
 
         GeneratePath();
@@ -38,7 +35,7 @@ public class Butterfly : MonoBehaviour
 
     private void Update()
     {
-        if (activeCombination == null)
+        if (parentPlants.Count == 0)
             return;
 
         if (_path.Count == 0)
@@ -66,10 +63,25 @@ public class Butterfly : MonoBehaviour
         }
     }
 
-
-    public void SetActiveCombination(ActiveCombination activeCombination)
+    public void ClearCombination()
     {
-        this.activeCombination = activeCombination;
+        Debug.Log($"Clearing {name} path and parent plants");
+        parentPlants.Clear();
+    }
+
+    public void AddParentPlant(Plant plant)
+    {
+        if (plant == null)
+        {
+            Debug.LogError("Plant is null");
+            return;
+        }
+
+        if (parentPlants.Contains(plant))
+            return;
+
+        Debug.Log($"Adding {plant.name} to {name}");
+        parentPlants.Add(plant);
     }
 
     public void SetTargetPosition(Vector3 targetPosition)
@@ -79,7 +91,7 @@ public class Butterfly : MonoBehaviour
 
     public void GeneratePath()
     {
-        if (activeCombination == null)
+        if (parentPlants.Count == 0)
             return;
 
         _path.Clear();
@@ -109,12 +121,12 @@ public class Butterfly : MonoBehaviour
 
     private Vector3 GetTargetPosition()
     {
-        Plant randomPlant = activeCombination.Plants[Random.Range(0, activeCombination.Plants.Count)];
+        Transform randomPlant = parentPlants[Random.Range(0, parentPlants.Count)].transform;
 
         Vector2 randomPosition = Random.insideUnitCircle * PlantOrbitRadius;
         float randomHeight = Random.Range(PlantOrbitMinHeight, PlantOrbitMaxHeight);
 
-        Vector3 targetPosition = randomPlant.transform.position + new Vector3(randomPosition.x, randomHeight, randomPosition.y);
+        Vector3 targetPosition = randomPlant.position + new Vector3(randomPosition.x, randomHeight, randomPosition.y);
 
         return targetPosition;
     }

@@ -13,8 +13,14 @@ public enum GameState
 [System.Serializable]
 public class ActiveCombination
 {
-    [field: SerializeField] public List<Plant> Plants { get; private set; } = null;
-    [field: SerializeField] public List<Butterfly> Butterflies { get; private set; } = null;
+    [SerializeField] public List<Transform> Plants = new List<Transform>();
+    [SerializeField] public List<Butterfly> Butterflies = new List<Butterfly>();
+
+    public void AddPlant(Transform plant)
+    {
+        if (!Plants.Contains(plant))
+            Plants.Add(plant);
+    }
 }
 
 public class Game : MonoBehaviour
@@ -25,7 +31,7 @@ public class Game : MonoBehaviour
     [field: SerializeField] public GameState CurrentState { get; private set; } = GameState.Playing;
 
     [field: Header("References")]
-    [field: SerializeField] public Transform MainCamera { get; private set; } = null;
+    [field: SerializeField] public Camera MainCamera { get; private set; } = null;
 
     [field: Header("Controllers")]
     [field: SerializeField] public InputController InputController { get; private set; } = null;

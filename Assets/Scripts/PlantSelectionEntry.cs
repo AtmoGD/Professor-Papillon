@@ -36,6 +36,16 @@ public class PlantSelectionEntry : MonoBehaviour, IPointerEnterHandler, IPointer
         if (Game.Instance.CurrentState != GameState.Playing)
             return;
 
-        Game.Instance.PlacementController.SelectPlant(Data);
+        Game.Instance.PlacementController.SelectPlant(Data, this);
+    }
+
+    public void OnSelect()
+    {
+        Animator.SetBool("Selected", true);
+    }
+
+    public void OnDeselect()
+    {
+        Animator.SetBool("Selected", false);
     }
 }

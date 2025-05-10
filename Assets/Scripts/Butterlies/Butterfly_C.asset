@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Butterfly_C
   m_EditorClassIdentifier: 
   <Name>k__BackingField: C
-  <Prefab>k__BackingField: {fileID: 0}
+  <Prefab>k__BackingField: {fileID: 683802420054550736, guid: 4a1609fc827d99a4485412c40baada2f, type: 3}
   <Likes>k__BackingField:
   - <Plants>k__BackingField:
     - {fileID: 11400000, guid: df18828ec75edc24787c78ca70f7d23e, type: 2}

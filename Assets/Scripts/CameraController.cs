@@ -25,7 +25,6 @@ public class CameraController : MonoBehaviour
     [field: SerializeField] public float HeightLerpSpeed { get; private set; } = 5f;
     [field: SerializeField] public float HeightThreshold { get; private set; } = 0.1f;
     [field: SerializeField] public bool InvertY { get; private set; } = false;
-    [field: SerializeField] public bool UserRightClickForHeight { get; private set; } = false;
 
     [field: Header("Zoom")]
     [field: SerializeField] public float MinZoom { get; private set; } = 5f;
@@ -57,17 +56,16 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        cameraTransform = Game.Instance.MainCamera;
+        cameraTransform = Game.Instance.MainCamera.transform;
 
         SetStartValues();
     }
 
     private void Update()
     {
-        // if (Game.Instance.CurrentState != GameState.Playing)
-        //     return;
+        if (Game.Instance.CurrentState == GameState.Playing)
+            UpdateTargets();
 
-        UpdateTargets();
         UpdateCurrent();
     }
 
@@ -88,17 +86,13 @@ public class CameraController : MonoBehaviour
 
     private void UpdateTargets()
     {
-        if (Game.Instance.InputController.ShiftClick && Game.Instance.InputController.MiddleClick)
-        {
+        if (Game.Instance.InputController.MiddleClick)
             UpdateTargetFocusPosition();
-        }
-        else
-        {
-            if (Game.Instance.InputController.MiddleClick)
-                UpdateTargetRotation();
 
-            if ((UserRightClickForHeight && Game.Instance.InputController.RightClick) || Game.Instance.InputController.MiddleClick)
-                UpdateTargetHeight();
+        if (Game.Instance.InputController.RightClick)
+        {
+            UpdateTargetRotation();
+            UpdateTargetHeight();
         }
 
         if (Game.Instance.InputController.MouseScroll != 0)
@@ -109,7 +103,6 @@ public class CameraController : MonoBehaviour
     {
         if (!IsOverRotationTheshold() && !IsOverHeightTheshold()) return;
 
-        // Calculate the new target Position based on the main camera right Vector3
         Vector3 movement = Vector3.zero;
         movement += cameraTransform.forward * Game.Instance.InputController.MoveDelta.y * (InvertYTargetMovement ? -1 : 1);
         movement += cameraTransform.right * Game.Instance.InputController.MoveDelta.x * (InvertXTargetMovement ? -1 : 1);

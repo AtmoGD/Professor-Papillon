@@ -26,6 +26,11 @@ public class InputController : MonoBehaviour
         }
     }
 
+    public void ConsumeLeftClick()
+    {
+        LeftClick = false;
+    }
+
     public void OnRightClick(InputAction.CallbackContext context)
     {
         if (context.performed)

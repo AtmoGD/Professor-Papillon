@@ -53,6 +53,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8799715112921500598, guid: 065531d83b4c10e4f86e8b32d4912491, type: 3}
+      propertyPath: <Data>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c29a11cbbb3d8a4a959e65ac9850b63, type: 2}
+    - target: {fileID: 8799715112921500598, guid: 065531d83b4c10e4f86e8b32d4912491, type: 3}
       propertyPath: <Animator>k__BackingField
       value: 
       objectReference: {fileID: 3659140939726549703}
