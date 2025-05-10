@@ -1,3 +1,4 @@
+using FMODUnity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,6 +9,8 @@ public class PlantSelectionEntry : MonoBehaviour, IPointerEnterHandler, IPointer
     [field: SerializeField] public Animator Animator { get; private set; } = null;
     [field: SerializeField] public UnityEngine.UI.Image PlantImage { get; private set; } = null;
     [field: SerializeField] public TMP_Text PlantName { get; private set; } = null;
+    [field: SerializeField] public StudioEventEmitter EventReference { get; private set; } = null;
+
 
     private void Start()
     {
@@ -16,6 +19,7 @@ public class PlantSelectionEntry : MonoBehaviour, IPointerEnterHandler, IPointer
 
         PlantImage.sprite = Data.Icon;
         PlantName.text = Data.Name;
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,6 +38,7 @@ public class PlantSelectionEntry : MonoBehaviour, IPointerEnterHandler, IPointer
             return;
 
         Game.Instance.PlacementController.SelectPlant(Data, this);
+        EventReference.Play();
     }
 
     public void OnSelect()

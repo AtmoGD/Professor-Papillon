@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 7338424620013158285}
   - component: {fileID: 3834269839299879233}
   - component: {fileID: 9217982412226093901}
+  - component: {fileID: -7436283754129869269}
   m_Layer: 5
   m_Name: Plant Selection Entry Base
   m_TagString: Untagged
@@ -365,6 +366,38 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 3834269839299879233}
   <PlantImage>k__BackingField: {fileID: 1302743296763937387}
   <PlantName>k__BackingField: {fileID: 2034137859413782840}
+  <EventReference>k__BackingField: {fileID: -7436283754129869269}
+--- !u!114 &-7436283754129869269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325550735382645263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1237006932
+      Data2: 1272511658
+      Data3: -821775697
+      Data4: -1534986000
+    Path: event:/Test
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &4556396827826602185
 GameObject:
   m_ObjectHideFlags: 0
