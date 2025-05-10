@@ -52,17 +52,21 @@ MonoBehaviour:
   <PlantOrbitMinHeight>k__BackingField: 0.3
   <PlantOrbitMaxHeight>k__BackingField: 2
   <PathGenerationThreshold>k__BackingField: 0.3
-  <PathThreshold>k__BackingField: 0.1
+  <PathReachedThreshold>k__BackingField: 0.1
   <MaxPathBreaks>k__BackingField: 50
-  <MinSpeed>k__BackingField: 0.1
-  <MaxSpeed>k__BackingField: 1
+  <MinSpeed>k__BackingField: 0.3
+  <MaxSpeed>k__BackingField: 1.5
+  <RandomSpeedIntervallMin>k__BackingField: 0.1
+  <RandomSpeedIntervallMax>k__BackingField: 1
   <RotationSpeed>k__BackingField: 5
-  <AnimationSpeed>k__BackingField: 3
+  <AnimationSpeed>k__BackingField: 2
   <noiseScale>k__BackingField: 3
-  activeCombination:
-    <Plants>k__BackingField:
-    - {fileID: 0}
-    <Butterflies>k__BackingField: []
+  <LevelMinRadius>k__BackingField: 10
+  <LevelMaxRadius>k__BackingField: 15
+  <LevelMinHeight>k__BackingField: 0.1
+  <LevelMaxHeight>k__BackingField: 3
+  <FadeOutBeforeDestroy>k__BackingField: 3
+  parentPlants: []
   _path:
   - {x: -0.5188738, y: 2.4440982, z: 0.6413593}
   - {x: -1.0561976, y: 2.5705876, z: 1.0961127}

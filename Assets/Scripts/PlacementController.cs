@@ -1,7 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System;
+using Unity.Burst;
 
+[BurstCompile]
 public class PlacementController : MonoBehaviour
 {
     [field: Header("Settings")]
@@ -21,7 +24,7 @@ public class PlacementController : MonoBehaviour
 
     private PlacementIndicator placementIndicator = null;
 
-
+    [BurstCompile]
     private void Update()
     {
         if (Game.Instance.CurrentState != GameState.Playing)
@@ -53,6 +56,7 @@ public class PlacementController : MonoBehaviour
         }
     }
 
+    [BurstCompile]
     private void PlacePlant()
     {
         if (placementIndicator == null)
@@ -67,36 +71,40 @@ public class PlacementController : MonoBehaviour
         Destroy(placementIndicator.gameObject);
         placementIndicator = null;
 
-        CheckCombinations();
+        ImprovedCheckCombinations();
     }
 
-    private void CheckCombinations()
+    [BurstCompile]
+    private void ImprovedCheckCombinations()
     {
-        ActiveCombinations.Clear();
-
         List<Butterfly> butterfliesToAdd = new List<Butterfly>(ActiveButterflies);
         ActiveButterflies.Clear();
 
-        ActivePlants.ForEach(plant =>
+        ActiveButterflies.Clear();
+
+        List<ActiveCombination> newCombinations = new List<ActiveCombination>();
+
+        ActivePlants.ForEach((plantToCheck) =>
         {
             List<Plant> plantsInReach = new List<Plant>();
-            List<Collider> colliderInReach = new List<Collider>(Physics.OverlapSphere(plant.transform.position, PlantNearRadius, PlantLayer));
-
-            Debug.Log($"Collider in reach: {colliderInReach.Count}");
+            List<Collider> colliderInReach = new List<Collider>(Physics.OverlapSphere(plantToCheck.transform.position, PlantNearRadius, PlantLayer));
 
             colliderInReach.ForEach(collider =>
             {
                 Plant otherPlant = collider.GetComponent<Plant>();
-                if (otherPlant != null)
+                if (otherPlant != plantToCheck && otherPlant != null && otherPlant != plantToCheck)
                 {
                     plantsInReach.Add(otherPlant);
                 }
             });
 
+            plantsInReach.Add(plantToCheck);
+
             if (plantsInReach.Count > 0)
             {
                 ButterflyData bestButterflyData = null;
                 PlantCombination bestCombination = null;
+                List<Plant> plantsForThisCombination = new List<Plant>();
 
                 ButterflyDatas.ForEach(butterflyData =>
                 {
@@ -111,6 +119,8 @@ public class PlacementController : MonoBehaviour
                             }
                         });
 
+                        isCombinationPossible = isCombinationPossible && combination.Plants.Exists(p => p == plantToCheck.Data);
+
                         if (isCombinationPossible)
                         {
                             if (bestButterflyData == null || bestCombination == null)
@@ -123,31 +133,46 @@ public class PlacementController : MonoBehaviour
                                 bestButterflyData = butterflyData;
                                 bestCombination = combination;
                             }
+
+                            if (bestCombination != null)
+                            {
+                                plantsForThisCombination.Clear();
+                                List<Plant> plantsForThisCombinationLeft = new List<Plant>(plantsInReach);
+
+                                plantsForThisCombination.Add(plantToCheck);
+                                plantsForThisCombinationLeft.Remove(plantToCheck);
+
+                                bool addedPlantToCheck = false;
+
+                                bestCombination.Plants.ForEach(plantData =>
+                                {
+                                    Plant plantToAdd = plantsForThisCombinationLeft.Find(p => p.Data == plantData);
+                                    if (plantToAdd != null)
+                                    {
+                                        if (plantToAdd.Data == plantToCheck.Data && !addedPlantToCheck)
+                                        {
+                                            addedPlantToCheck = true;
+                                        }
+                                        else
+                                        {
+                                            plantsForThisCombination.Add(plantToAdd);
+                                            plantsForThisCombinationLeft.Remove(plantToAdd);
+                                        }
+                                    }
+                                });
+                            }
                         }
                     });
                 });
 
                 if (bestButterflyData != null && bestCombination != null)
                 {
-                    Debug.Log($"Best Butterfly: {bestButterflyData.name}");
-                    Debug.Log($"Best Combination: {bestCombination.Plants.Count}");
-                    List<Plant> plantsToAdd = new List<Plant>();
-
-                    bestCombination.Plants.ForEach(plantData =>
+                    bool isCombinationAlreadyActive = newCombinations.Exists(combination =>
                     {
-                        Plant plantToAdd = plantsInReach.Find(p => p.Data == plantData);
-                        if (plantToAdd != null)
-                        {
-                            plantsToAdd.Add(plantToAdd);
-                        }
-                    });
-
-                    bool isCombinationAlreadyActive = ActiveCombinations.Exists(combination =>
-                    {
-                        bool isSamePlants = combination.Plants.Count == plantsToAdd.Count;
+                        bool isSamePlants = combination.Plants.Count == bestCombination.Plants.Count;
                         if (isSamePlants)
                         {
-                            plantsToAdd.ForEach(plantCheck =>
+                            plantsForThisCombination.ForEach(plantCheck =>
                             {
                                 if (!combination.Plants.Contains(plantCheck))
                                 {
@@ -158,30 +183,43 @@ public class PlacementController : MonoBehaviour
 
                         return isSamePlants;
                     });
-
                     if (!isCombinationAlreadyActive)
                     {
                         ActiveCombination activeCombination = new ActiveCombination();
                         activeCombination.Plants = new List<Plant>();
-                        plantsToAdd.ForEach(plantWhatEver =>
+                        activeCombination.Butterflies = new List<Butterfly>();
+
+                        plantsForThisCombination.ForEach(plantWhatEver =>
                         {
                             activeCombination.AddPlant(plantWhatEver);
                         });
-                        activeCombination.Butterflies = new List<Butterfly>();
 
                         int neededButterflies = bestCombination.Plants.Count;
                         for (int i = 0; i < neededButterflies; i++)
                         {
                             Butterfly butterfly = butterfliesToAdd.Find(b => b.Data == bestButterflyData);
+                            bool isNewButterfly = false;
                             if (butterfly != null)
                             {
                                 butterfliesToAdd.Remove(butterfly);
+                                butterfly.ClearCombination();
                             }
                             else
                             {
                                 butterfly = Instantiate(bestButterflyData.Prefab).GetComponent<Butterfly>();
+                                isNewButterfly = true;
                             }
+
+                            activeCombination.Plants.ForEach(plantComb =>
+                            {
+                                butterfly.AddParentPlant(plantComb);
+                            });
+
+                            if (isNewButterfly)
+                                butterfly.EnterLevel();
+
                             activeCombination.Butterflies.Add(butterfly);
+
                             ActiveButterflies.Add(butterfly);
                         }
 
@@ -195,17 +233,25 @@ public class PlacementController : MonoBehaviour
                             });
                         });
 
-                        ActiveCombinations.Add(activeCombination);
+                        newCombinations.Add(activeCombination);
                     }
                 }
             }
         });
 
-        Debug.Log($"Active Plants: {ActivePlants.Count}");
-        Debug.Log($"Active Combinations: {ActiveCombinations.Count}");
-        Debug.Log($"Active Butterflies: {ActiveButterflies.Count}");
+        ActiveCombinations.Clear();
+        newCombinations.ForEach(combination =>
+        {
+            ActiveCombinations.Add(combination);
+        });
+
+        butterfliesToAdd.ForEach(butterfly =>
+        {
+            butterfly.ExitLevel();
+        });
     }
 
+    [BurstCompile]
     public void SelectPlant(PlantData plantData, PlantSelectionEntry plantSelectionEntry)
     {
         if (plantData == null)
