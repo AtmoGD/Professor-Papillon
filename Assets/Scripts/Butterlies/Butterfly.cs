@@ -62,12 +62,12 @@ public class Butterfly : MonoBehaviour
 
     public void FadeIn()
     {
-        Animator.SetBool("FadeIn", true);
+        // Animator.SetBool("FadeIn", true);
     }
 
     public void FadeOut()
     {
-        Animator.SetBool("FadeOut", true);
+        // Animator.SetBool("FadeOut", true);
     }
 
     public void DestroySelf()
@@ -174,7 +174,7 @@ public class Butterfly : MonoBehaviour
     {
         if (plant == null)
         {
-            Debug.LogError("Plant is null");
+            Debug.LogWarning("Plant is null");
             return;
         }
 
@@ -230,12 +230,47 @@ public class Butterfly : MonoBehaviour
     [BurstCompile]
     private Vector3 GetTargetPosition()
     {
-        Transform randomPlant = parentPlants[Random.Range(0, parentPlants.Count)].transform;
+        if (parentPlants.Count == 0)
+        {
+            Debug.LogWarning("Parent plants list is empty");
+            return GetRandomPositionOutsideOfLevel();
+        }
+
+        Plant randomPlant = parentPlants[Random.Range(0, parentPlants.Count)];
+
+        if (randomPlant == null)
+        {
+            Debug.LogWarning("Random plant is null");
+            return GetRandomPositionOutsideOfLevel();
+        }
+
+        parentPlants.ForEach(plant =>
+        {
+            if (plant == null)
+            {
+                Debug.LogWarning("Parent plant is null");
+                return;
+            }
+
+            if (plant.transform == null)
+            {
+                Debug.LogWarning("Parent plant transform is null");
+                return;
+            }
+        });
+
+        Transform randomTransform = randomPlant.transform;
+
+        if (randomTransform == null)
+        {
+            Debug.LogWarning("Random Transform is null");
+            return GetRandomPositionOutsideOfLevel();
+        }
 
         Vector2 randomPosition = Random.insideUnitCircle * PlantOrbitRadius;
         float randomHeight = Random.Range(PlantOrbitMinHeight, PlantOrbitMaxHeight);
 
-        Vector3 targetPosition = randomPlant.position + new Vector3(randomPosition.x, randomHeight, randomPosition.y);
+        Vector3 targetPosition = randomTransform.position + new Vector3(randomPosition.x, randomHeight, randomPosition.y);
 
         return targetPosition;
     }

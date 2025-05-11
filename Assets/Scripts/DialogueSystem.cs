@@ -22,7 +22,7 @@ public class DialogueSystem : MonoBehaviour
     [field: SerializeField] public TMP_Text DialogueText { get; private set; } = null;
     [field: SerializeField] public Button NextButton { get; private set; } = null;
 
-    [field: SerializeField] public List<Dialogue> Dialogues { get; private set; } = new List<Dialogue>();
+    [SerializeField] public List<Dialogue> Dialogues = new List<Dialogue>();
 
     private int currentDialogueIndex = 0;
 
@@ -70,7 +70,6 @@ public class DialogueSystem : MonoBehaviour
         currentDialogueIndex++;
         if (currentDialogueIndex >= Dialogues.Count)
         {
-            currentDialogueIndex = 0;
             return;
         }
 

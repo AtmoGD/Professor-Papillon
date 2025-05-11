@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using System;
 using Unity.Burst;
+using UnityEngine.EventSystems;
 
 [BurstCompile]
 public class PlacementController : MonoBehaviour
@@ -44,7 +45,7 @@ public class PlacementController : MonoBehaviour
         UpdateRotation();
 
         Ray ray = Game.Instance.MainCamera.ScreenPointToRay(Game.Instance.InputController.MousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 1000, GroundLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000, GroundLayer) && !IsPointerOverUI() && SelectedPlantData != null)
         {
             if (placementIndicator == null)
             {
@@ -67,6 +68,16 @@ public class PlacementController : MonoBehaviour
             PlacePlant();
             justPlacedTimeout = PlacedTimeoutTime;
         }
+    }
+
+    [BurstCompile]
+    private bool IsPointerOverUI()
+    {
+        EventSystem eventSystem = EventSystem.current;
+        if (eventSystem == null)
+            return false;
+
+        return eventSystem.IsPointerOverGameObject();
     }
 
     private void UpdateRotation()
