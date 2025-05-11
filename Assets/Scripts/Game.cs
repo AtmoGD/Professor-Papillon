@@ -54,12 +54,6 @@ public class Game : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
-    {
-        GameStateTrigger.Value = 0;
-        GameStateTrigger.TriggerParameters();
-    }
-
     public void StartGame()
     {
         CurrentState = GameState.Playing;
@@ -94,6 +88,8 @@ public class Game : MonoBehaviour
         UiController.ClosePauseMenu();
         UiController.OpenGameUI();
     }
+
+
 
     public void ReturnToMainMenu()
     {

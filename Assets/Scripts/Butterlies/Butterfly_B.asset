@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953435d8f6475b946bfda0df187ee4c9, type: 3}
   m_Name: Butterfly_B
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: B
+  <Name>k__BackingField: Firetail
   <Prefab>k__BackingField: {fileID: 5164599063890501106, guid: b382e51f927de50448f2f762e6fab3fc, type: 3}
   <Likes>k__BackingField:
   - <Plants>k__BackingField:
