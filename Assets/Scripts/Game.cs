@@ -38,6 +38,7 @@ public class Game : MonoBehaviour
     [field: SerializeField] public UIController UiController { get; private set; } = null;
     [field: SerializeField] public PlacementController PlacementController { get; private set; } = null;
     [field: SerializeField] public ScreenshotController ScreenshotController { get; private set; } = null;
+    [field: SerializeField] public DialogueSystem DialogueSystem { get; private set; } = null;
 
     [field: SerializeField] public float PlantNearRadius { get; private set; } = 4f;
 
@@ -62,6 +63,8 @@ public class Game : MonoBehaviour
 
         UiController.CloseMainMenu();
         UiController.OpenGameUI();
+
+        DialogueSystem.StartDialogue();
     }
 
     public void PauseGame()

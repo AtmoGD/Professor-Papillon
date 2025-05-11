@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: <Renderer>k__BackingField
       value: 
       objectReference: {fileID: 8677791958500240841}
+    - target: {fileID: 2215970263236314588, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: '<Renderer>k__BackingField.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8677791958500240841}
     - target: {fileID: 4134570065998850045, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
       propertyPath: m_Name
       value: Plant_D

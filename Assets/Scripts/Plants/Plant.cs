@@ -11,7 +11,7 @@ public class Plant : MonoBehaviour
     [field: SerializeField] public Animator Animator { get; private set; } = null;
 
     [field: SerializeField] public LayerMask PlantLayer { get; private set; } = 7;
-    [field: SerializeField] public Renderer Renderer { get; private set; } = null;
+    [field: SerializeField] public List<Renderer> Renderer { get; private set; } = null;
     [field: SerializeField] public Material placmentIndicatorMaterial { get; private set; } = null;
     [field: SerializeField] public float CheckWelkingInterval { get; private set; } = 4f;
     [field: SerializeField] public Color BaseColor { get; private set; } = Color.white;
@@ -31,6 +31,8 @@ public class Plant : MonoBehaviour
     [SerializeField] private bool wasWelking = false;
     private float welkProgress = 0f;
     private float currentWelkingInterval = 0f;
+
+    private bool isDeleted = false;
 
     void Update()
     {
@@ -116,9 +118,12 @@ public class Plant : MonoBehaviour
         else
             currentColor = Color.Lerp(WelkingColor, BaseColor, welkProgress);
 
-        foreach (var material in Renderer.materials)
+        foreach (var renderer in Renderer)
         {
-            material.SetColor("_BaseColor", currentColor);
+            foreach (var material in renderer.materials)
+            {
+                material.SetColor("_BaseColor", currentColor);
+            }
         }
 
         if (welkProgress >= 1f)
@@ -134,14 +139,20 @@ public class Plant : MonoBehaviour
 
     private void DeleteThisPLant()
     {
+        if (isDeleted) return;
+
+        isDeleted = true;
+
         Game.Instance.PlacementController.ActivePlants.Remove(this);
         Game.Instance.PlacementController.CheckCombinations();
 
         if (particleSystems.Count > 0)
         {
             foreach (var particleSystem in particleSystems)
-                particleSystem.Stop();
+                particleSystem.Play();
         }
+
+        Animator.SetTrigger("PopOut");
 
         Destroy(gameObject, 2f);
     }
@@ -150,13 +161,20 @@ public class Plant : MonoBehaviour
     {
         IsPlacementIndicator = true;
 
-        List<Material> materials = new List<Material>();
-        foreach (var material in Renderer.materials)
+
+
+        foreach (var renderer in Renderer)
         {
-            materials.Add(placmentIndicatorMaterial);
+            List<Material> materials = new List<Material>();
+
+            foreach (var material in renderer.materials)
+            {
+                materials.Add(placmentIndicatorMaterial);
+                Materials.Add(material);
+            }
+
+            renderer.SetMaterials(materials);
         }
-        Renderer.SetMaterials(materials);
-        Materials = materials;
     }
 
     void OnTriggerEnter(Collider other)
