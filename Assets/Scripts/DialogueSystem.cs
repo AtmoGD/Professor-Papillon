@@ -80,4 +80,17 @@ public class DialogueSystem : MonoBehaviour
 
         StartCoroutine(DialogueCoroutine(Dialogues[currentDialogueIndex]));
     }
+
+
+    public void SingleButterflySpawn(Butterfly butterfly)
+    {
+    }
+
+    public void MultiButterflySpawn(Butterfly butterfly, Plant plant)
+    {
+    }
+
+    public void ButterflyDying(Butterfly butterfly)
+    {
+    }
 }
