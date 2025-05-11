@@ -13,6 +13,7 @@ public class Plant : MonoBehaviour
     [field: Header("Settings")]
     [field: SerializeField] public StudioEventEmitter ShowUpEmitter { get; private set; } = null;
     [field: SerializeField] public StudioEventEmitter SpawnEmitter { get; private set; } = null;
+    [field: SerializeField] public StudioEventEmitter DeleteEmitter { get; private set; } = null;
 
     [field: SerializeField] public LayerMask PlantLayer { get; private set; } = 7;
     [field: SerializeField] public List<Renderer> Renderer { get; private set; } = null;
@@ -28,7 +29,7 @@ public class Plant : MonoBehaviour
     public bool IsCollidingWithOtherPlants => currentCollisions.Count > 0;
 
     public bool IsPlacementIndicator { get; private set; } = false;
-    public List<Material> Materials { get; private set; } = new List<Material>();
+    // public List<Material> Materials { get; private set; } = new List<Material>();
 
 
     [SerializeField] private bool isWelking = false;
@@ -43,7 +44,15 @@ public class Plant : MonoBehaviour
     {
         if (IsPlacementIndicator)
         {
-            Materials.ForEach(material => material.SetInt("_Error", IsCollidingWithOtherPlants ? 1 : 0));
+            Renderer.ForEach(renderer =>
+            {
+                foreach (var material in renderer.materials)
+                {
+                    material.SetInt("_Error", IsCollidingWithOtherPlants ? 1 : 0);
+                }
+            });
+            // Materials.ForEach(material => material.SetInt("_Error", IsCollidingWithOtherPlants ? 1 : 0));
+            Debug.Log(IsCollidingWithOtherPlants ? "Colliding" : "Not Colliding");
         }
         else
         {
@@ -159,6 +168,10 @@ public class Plant : MonoBehaviour
 
         Animator.SetTrigger("PopOut");
 
+        DeleteEmitter.Play();
+
+        Game.Instance.DialogueSystem.PlantDying();
+
         Destroy(gameObject, 2f);
     }
 
@@ -173,7 +186,6 @@ public class Plant : MonoBehaviour
             foreach (var material in renderer.materials)
             {
                 materials.Add(placmentIndicatorMaterial);
-                Materials.Add(material);
             }
 
             renderer.SetMaterials(materials);

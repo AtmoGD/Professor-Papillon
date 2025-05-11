@@ -5002,6 +5002,7 @@ GameObject:
   - component: {fileID: 3107686569303166924}
   - component: {fileID: 8882549538525265201}
   - component: {fileID: 6186807425208284650}
+  - component: {fileID: 5912706556902922907}
   m_Layer: 7
   m_Name: Plant Base
   m_TagString: Untagged
@@ -5042,6 +5043,7 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 3107686569303166924}
   <ShowUpEmitter>k__BackingField: {fileID: 8882549538525265201}
   <SpawnEmitter>k__BackingField: {fileID: 6186807425208284650}
+  <DeleteEmitter>k__BackingField: {fileID: 5912706556902922907}
   <PlantLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
@@ -5191,6 +5193,37 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: -1
   OverrideMaxDistance: -1
+--- !u!114 &5912706556902922907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4134570065998850045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1603025115
+      Data2: 1223123007
+      Data3: -374262338
+      Data4: 1036493316
+    Path: event:/Interact/INT_Flower_Despawn
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6793238794142455280
 GameObject:
   m_ObjectHideFlags: 0

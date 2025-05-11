@@ -115,6 +115,19 @@ public class PlacementController : MonoBehaviour
         placementIndicator = null;
 
         CheckCombinations();
+
+        ActiveCombination combination = CheckWhichCombinationIsForNewPlant(newPlant);
+        if (combination != null)
+        {
+            if (combination.Plants.Count == 1)
+            {
+                Game.Instance.DialogueSystem.SingleButterflySpawn(combination.Butterflies[0]);
+            }
+            else
+            {
+                Game.Instance.DialogueSystem.MultiButterflySpawn();
+            }
+        }
     }
 
     [BurstCompile]
@@ -296,6 +309,29 @@ public class PlacementController : MonoBehaviour
         Game.Instance.UiController.UpdateJars();
 
         placementAngle = UnityEngine.Random.Range(0f, 360f);
+    }
+
+    [BurstCompile]
+    public ActiveCombination CheckWhichCombinationIsForNewPlant(Plant newPlant)
+    {
+        ActiveCombination activeCombination = ActiveCombinations.Find(combination =>
+        {
+            bool isSamePlants = combination.Plants.Count == 1;
+            if (isSamePlants)
+            {
+                combination.Plants.ForEach(plantCheck =>
+                {
+                    if (!plantCheck.IsPlacementIndicator && plantCheck != newPlant)
+                    {
+                        isSamePlants = false;
+                    }
+                });
+            }
+
+            return isSamePlants;
+        });
+
+        return activeCombination;
     }
 
     [BurstCompile]

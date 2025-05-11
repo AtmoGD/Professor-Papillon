@@ -26,7 +26,7 @@ public class MushroomController : MonoBehaviour
     [SerializeField] private float lensDistortionRandomness => UnityEngine.Random.Range(lensDistortionRandomnessMin, lensDistortionRandomnessMax);
     [SerializeField] private bool active = false;
     private float timeLeft;
-    private float activeMultiplier = 1f;
+    private float activeMultiplier = 0f;
 
     private void Update()
     {
@@ -35,7 +35,7 @@ public class MushroomController : MonoBehaviour
 
         activeMultiplier = Mathf.Lerp(activeMultiplier, active ? 1 : 0, activeLerpSpeed * Time.deltaTime);
 
-        if (!active || activeMultiplier == 0)
+        if (!active && activeMultiplier == 0)
             return;
 
 
@@ -75,10 +75,11 @@ public class MushroomController : MonoBehaviour
         Plant plant = other.GetComponent<Plant>();
         if (plant.Data == Data && !plant.IsPlacementIndicator)
         {
-            // Spawn Mushrooms and get wonky wonkxy
-            Debug.Log("Mushroom Spawned");
             plant.gameObject.SetActive(false);
+
             SetEffectActive(true);
+
+            Instantiate(MushroomPRefab, transform.position, Quaternion.identity);
         }
     }
 }

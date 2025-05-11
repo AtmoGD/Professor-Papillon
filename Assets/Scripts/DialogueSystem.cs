@@ -25,6 +25,24 @@ public class DialogueSystem : MonoBehaviour
 
     [SerializeField] public List<Dialogue> Dialogues = new List<Dialogue>();
 
+    [SerializeField] public ButterflyData ButterflyDataA = null;
+    [SerializeField] public List<Dialogue> SpawnSingleButterflyA = new List<Dialogue>();
+    [SerializeField] public ButterflyData ButterflyDataB = null;
+    [SerializeField] public List<Dialogue> SpawnSingleButterflyB = new List<Dialogue>();
+    [SerializeField] public ButterflyData ButterflyDataC = null;
+    [SerializeField] public List<Dialogue> SpawnSingleButterflyC = new List<Dialogue>();
+
+    [SerializeField] public List<Dialogue> SpawnMulti = new List<Dialogue>();
+
+    [SerializeField] public List<Dialogue> PlantDie = new List<Dialogue>();
+    [SerializeField] public float DialogueChance = 0.5f;
+
+    IEnumerator currentDialogueCoroutine = null;
+
+    private bool tutorialDone = false;
+
+
+
     private int currentDialogueIndex = 0;
 
     public void StartDialogue()
@@ -32,7 +50,14 @@ public class DialogueSystem : MonoBehaviour
         if (Dialogues.Count == 0)
             return;
 
-        StartCoroutine(DialogueCoroutine(Dialogues[currentDialogueIndex], 1.5f));
+        if (currentDialogueCoroutine != null)
+        {
+            StopCoroutine(currentDialogueCoroutine);
+        }
+
+        currentDialogueCoroutine = DialogueCoroutine(Dialogues[currentDialogueIndex], 1.5f);
+
+        StartCoroutine(currentDialogueCoroutine);
     }
 
 
@@ -65,6 +90,8 @@ public class DialogueSystem : MonoBehaviour
         {
             NextButton.gameObject.SetActive(true);
         }
+
+        currentDialogueCoroutine = null;
     }
 
     public void NextDialogue(bool forced = false)
@@ -73,24 +100,88 @@ public class DialogueSystem : MonoBehaviour
             return;
 
         currentDialogueIndex++;
-        if (currentDialogueIndex >= Dialogues.Count)
+        if (currentDialogueIndex >= Dialogues.Count - 1)
         {
+            tutorialDone = true;
             return;
         }
 
-        StartCoroutine(DialogueCoroutine(Dialogues[currentDialogueIndex]));
+        if (currentDialogueCoroutine != null)
+        {
+            StopCoroutine(currentDialogueCoroutine);
+        }
+
+        currentDialogueCoroutine = DialogueCoroutine(Dialogues[currentDialogueIndex], 0.5f);
+
+        StartCoroutine(currentDialogueCoroutine);
     }
 
 
     public void SingleButterflySpawn(Butterfly butterfly)
     {
+        if (currentDialogueCoroutine != null || !tutorialDone)
+        {
+            return;
+        }
+
+        if (Random.Range(0f, 1f) > DialogueChance)
+        {
+            return;
+        }
+
+        if (butterfly.Data == ButterflyDataA)
+        {
+            Dialogue dialogue = SpawnSingleButterflyA[Random.Range(0, SpawnSingleButterflyA.Count)];
+            StartCoroutine(DialogueCoroutine(dialogue, 0.5f));
+        }
+        else if (butterfly.Data == ButterflyDataB)
+        {
+            Dialogue dialogue = SpawnSingleButterflyB[Random.Range(0, SpawnSingleButterflyB.Count)];
+            StartCoroutine(DialogueCoroutine(dialogue, 0.5f));
+        }
+        else if (butterfly.Data == ButterflyDataC)
+        {
+            Dialogue dialogue = SpawnSingleButterflyC[Random.Range(0, SpawnSingleButterflyC.Count)];
+            StartCoroutine(DialogueCoroutine(dialogue, 0.5f));
+        }
     }
 
-    public void MultiButterflySpawn(Butterfly butterfly, Plant plant)
+    public void MultiButterflySpawn()
     {
+        if (currentDialogueCoroutine != null || !tutorialDone)
+        {
+            return;
+        }
+
+        if (Random.Range(0f, 1f) > DialogueChance)
+        {
+            return;
+        }
+
+        Dialogue dialogue = SpawnMulti[Random.Range(0, SpawnMulti.Count)];
+
+        currentDialogueCoroutine = DialogueCoroutine(dialogue, 0.5f);
+
+        StartCoroutine(currentDialogueCoroutine);
     }
 
-    public void ButterflyDying(Butterfly butterfly)
+    public void PlantDying()
     {
+        if (currentDialogueCoroutine != null || !tutorialDone)
+        {
+            return;
+        }
+
+        if (Random.Range(0f, 1f) > DialogueChance)
+        {
+            return;
+        }
+
+
+        Dialogue dialogue = PlantDie[Random.Range(0, PlantDie.Count)];
+
+        currentDialogueCoroutine = DialogueCoroutine(dialogue, 0.5f);
+
+        StartCoroutine(currentDialogueCoroutine);
     }
 }
