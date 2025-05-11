@@ -21,6 +21,7 @@ public class DialogueSystem : MonoBehaviour
     [field: SerializeField] public Image MoodImage { get; private set; } = null;
     [field: SerializeField] public TMP_Text DialogueText { get; private set; } = null;
     [field: SerializeField] public Button NextButton { get; private set; } = null;
+    [field: SerializeField] public FMODUnity.StudioEventEmitter MumblingEmitter { get; private set; } = null;
 
     [SerializeField] public List<Dialogue> Dialogues = new List<Dialogue>();
 
@@ -43,6 +44,8 @@ public class DialogueSystem : MonoBehaviour
 
         MoodImage.sprite = dialogue.MoodImage;
 
+        MumblingEmitter.Play();
+
         string currentText = "";
         for (int i = 0; i < dialogue.Text.Length; i++)
         {
@@ -50,6 +53,8 @@ public class DialogueSystem : MonoBehaviour
             DialogueText.text = currentText;
             yield return new WaitForSeconds(dialogue.CharacterTime);
         }
+
+        MumblingEmitter.Stop();
 
         if (dialogue.AutoSkip)
         {

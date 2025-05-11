@@ -91,6 +91,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant_B
       objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/Interact/INT_Baum_Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 612771401
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1226812659
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: -825124691
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: -159285623
+      objectReference: {fileID: 0}
     - target: {fileID: 6459819612961897490, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
       propertyPath: m_Radius
       value: 0.8
@@ -142,8 +170,47 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8408752856857945604, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1503089362300874747}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4134570065998850045, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3781425704836445588}
   m_SourcePrefab: {fileID: 100100000, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+--- !u!1 &115130431446606484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4134570065998850045, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+  m_PrefabInstance: {fileID: 4105584208244983145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3781425704836445588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115130431446606484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1179211916
+      Data2: 1175102206
+      Data3: -891667816
+      Data4: -1140462245
+    Path: event:/Ambiences/AMB_Baum
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &5496664503203717997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8408752856857945604, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}

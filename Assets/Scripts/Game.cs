@@ -28,6 +28,7 @@ public class Game : MonoBehaviour
 
     [field: Header("Game State")]
     [field: SerializeField] public GameState CurrentState { get; private set; } = GameState.Playing;
+    [field: SerializeField] public FMODUnity.StudioGlobalParameterTrigger GameStateTrigger { get; private set; } = null;
 
     [field: Header("References")]
     [field: SerializeField] public Camera MainCamera { get; private set; } = null;
@@ -55,11 +56,16 @@ public class Game : MonoBehaviour
 
     void Start()
     {
+        GameStateTrigger.Value = 0;
+        GameStateTrigger.TriggerParameters();
     }
 
     public void StartGame()
     {
         CurrentState = GameState.Playing;
+
+        GameStateTrigger.Value = 1;
+        GameStateTrigger.TriggerParameters();
 
         UiController.CloseMainMenu();
         UiController.OpenGameUI();
@@ -71,6 +77,9 @@ public class Game : MonoBehaviour
     {
         CurrentState = GameState.Paused;
 
+        GameStateTrigger.Value = 2;
+        GameStateTrigger.TriggerParameters();
+
         UiController.CloseGameUI();
         UiController.OpenPauseMenu();
     }
@@ -78,6 +87,9 @@ public class Game : MonoBehaviour
     public void ResumeGame()
     {
         CurrentState = GameState.Playing;
+
+        GameStateTrigger.Value = 1;
+        GameStateTrigger.TriggerParameters();
 
         UiController.ClosePauseMenu();
         UiController.OpenGameUI();

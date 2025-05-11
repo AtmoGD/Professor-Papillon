@@ -298,6 +298,8 @@ GameObject:
   - component: {fileID: 3834269839299879233}
   - component: {fileID: 9217982412226093901}
   - component: {fileID: -7436283754129869269}
+  - component: {fileID: 6361618310208421438}
+  - component: {fileID: 4715159187088250529}
   m_Layer: 5
   m_Name: Plant Selection Entry Base
   m_TagString: Untagged
@@ -382,13 +384,75 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1237006932
-      Data2: 1272511658
-      Data3: -821775697
-      Data4: -1534986000
-    Path: event:/Test
+      Data1: -1208125936
+      Data2: 1323774866
+      Data3: 1166668468
+      Data4: -1275487152
+    Path: event:/UI/UI_Zettel_Forward
   Event: 
-  EventPlayTrigger: 0
+  EventPlayTrigger: 17
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &6361618310208421438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325550735382645263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2105824554
+      Data2: 1281787941
+      Data3: -616415615
+      Data4: 297685769
+    Path: event:/UI/UI_Zettel_Backward
+  Event: 
+  EventPlayTrigger: 18
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &4715159187088250529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325550735382645263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -674549437
+      Data2: 1086897441
+      Data3: -437868113
+      Data4: -2130352940
+    Path: event:/UI/UI_Zettel_Click
+  Event: 
+  EventPlayTrigger: 19
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0

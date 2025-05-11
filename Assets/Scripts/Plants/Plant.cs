@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using FMODUnity;
 
 
 [System.Serializable]
@@ -9,6 +9,10 @@ public class Plant : MonoBehaviour
     [field: Header("References")]
     [field: SerializeField] public PlantData Data { get; private set; } = null;
     [field: SerializeField] public Animator Animator { get; private set; } = null;
+
+    [field: Header("Settings")]
+    [field: SerializeField] public StudioEventEmitter ShowUpEmitter { get; private set; } = null;
+    [field: SerializeField] public StudioEventEmitter SpawnEmitter { get; private set; } = null;
 
     [field: SerializeField] public LayerMask PlantLayer { get; private set; } = 7;
     [field: SerializeField] public List<Renderer> Renderer { get; private set; } = null;
@@ -33,6 +37,7 @@ public class Plant : MonoBehaviour
     private float currentWelkingInterval = 0f;
 
     private bool isDeleted = false;
+
 
     void Update()
     {
@@ -161,8 +166,6 @@ public class Plant : MonoBehaviour
     {
         IsPlacementIndicator = true;
 
-
-
         foreach (var renderer in Renderer)
         {
             List<Material> materials = new List<Material>();
@@ -174,6 +177,19 @@ public class Plant : MonoBehaviour
             }
 
             renderer.SetMaterials(materials);
+        }
+    }
+
+    public void SpawnSound()
+    {
+        if (IsPlacementIndicator)
+        {
+
+            ShowUpEmitter.Play();
+        }
+        else
+        {
+            SpawnEmitter.Play();
         }
     }
 

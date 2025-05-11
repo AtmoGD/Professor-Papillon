@@ -24,6 +24,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant_D
       objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/Interact/INT_Mauer_Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 1352911372
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1266868537
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: -1415027021
+      objectReference: {fileID: 0}
+    - target: {fileID: 6186807425208284650, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: -330243516
+      objectReference: {fileID: 0}
     - target: {fileID: 6905864975048385740, guid: f156bae02c6cde54c80b7761e20047eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

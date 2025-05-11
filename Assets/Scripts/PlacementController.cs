@@ -51,6 +51,7 @@ public class PlacementController : MonoBehaviour
             {
                 placementIndicator = Instantiate(SelectedPlantData.Prefab).GetComponent<Plant>();
                 placementIndicator.SetIsPlacementIndicator();
+                placementIndicator.SpawnSound();
             }
 
             placementIndicator.transform.position = hit.point;
@@ -106,6 +107,7 @@ public class PlacementController : MonoBehaviour
         Plant newPlant = Instantiate(SelectedPlantData.Prefab).GetComponent<Plant>();
         newPlant.gameObject.transform.position = placementIndicator.transform.position;
         newPlant.gameObject.transform.eulerAngles = placementIndicator.transform.eulerAngles;
+        newPlant.SpawnSound();
 
         ActivePlants.Add(newPlant);
 

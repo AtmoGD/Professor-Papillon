@@ -35,7 +35,7 @@ public class MushroomController : MonoBehaviour
 
         activeMultiplier = Mathf.Lerp(activeMultiplier, active ? 1 : 0, activeLerpSpeed * Time.deltaTime);
 
-        if (!active && activeMultiplier == 0)
+        if (!active || activeMultiplier == 0)
             return;
 
 
@@ -78,6 +78,7 @@ public class MushroomController : MonoBehaviour
             // Spawn Mushrooms and get wonky wonkxy
             Debug.Log("Mushroom Spawned");
             plant.gameObject.SetActive(false);
+            SetEffectActive(true);
         }
     }
 }

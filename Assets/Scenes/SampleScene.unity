@@ -1563,6 +1563,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337718210}
   m_CullTransparentMesh: 1
+--- !u!1 &353872912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353872913}
+  - component: {fileID: 353872914}
+  m_Layer: 0
+  m_Name: Bach
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &353872913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353872912}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.5375528, y: -2.0777142, z: -1.9915104}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2081424135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &353872914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353872912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1176658166
+      Data2: 1241576212
+      Data3: -703076214
+      Data4: 2136509956
+    Path: event:/Ambiences/AMB_Bach
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 50
 --- !u!1 &355721726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,6 +1722,9 @@ GameObject:
   - component: {fileID: 364371350}
   - component: {fileID: 364371349}
   - component: {fileID: 364371348}
+  - component: {fileID: 364371352}
+  - component: {fileID: 364371351}
+  - component: {fileID: 364371353}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1718,6 +1784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CurrentState>k__BackingField: 1
+  <GameStateTrigger>k__BackingField: {fileID: 364371349}
   <MainCamera>k__BackingField: {fileID: 330585545}
   <InputController>k__BackingField: {fileID: 364371338}
   <CameraController>k__BackingField: {fileID: 364371345}
@@ -2052,13 +2119,46 @@ MonoBehaviour:
   <MoodImage>k__BackingField: {fileID: 1809450015}
   <DialogueText>k__BackingField: {fileID: 1967412848}
   <NextButton>k__BackingField: {fileID: 26018829}
+  <MumblingEmitter>k__BackingField: {fileID: 364371353}
   Dialogues:
-  - <MoodImage>k__BackingField: {fileID: 0}
-    <Text>k__BackingField: 
-    <CharacterTime>k__BackingField: 0
+  - <MoodImage>k__BackingField: {fileID: 21300000, guid: 08ce53860c895df44a41ffd0acb6b62a, type: 3}
+    <Text>k__BackingField: Whoa-oh! Oh dear, oh dear. You startled me.. Who are you?
+      You're... wait, you're not a giant butterfly in disguise, are you?
+    <CharacterTime>k__BackingField: 0.02
     <AutoSkip>k__BackingField: 0
     <AutoSkipTime>k__BackingField: 0
-    <Skippable>k__BackingField: 0
+    <Skippable>k__BackingField: 1
+  - <MoodImage>k__BackingField: {fileID: 21300000, guid: ab543b9bb39c73f43aa9459459e1380a, type: 3}
+    <Text>k__BackingField: ...
+    <CharacterTime>k__BackingField: 0.5
+    <AutoSkip>k__BackingField: 0
+    <AutoSkipTime>k__BackingField: 0
+    <Skippable>k__BackingField: 1
+  - <MoodImage>k__BackingField: {fileID: 21300000, guid: e89ce46372a2c4d4e8ccc395f33ba0ad, type: 3}
+    <Text>k__BackingField: Oh, right! My intern! I'd almost forgotten. Come in! Steplightly
+      now-this is no ordinary garden... This is a special place for our winged companions!
+    <CharacterTime>k__BackingField: 0.02
+    <AutoSkip>k__BackingField: 0
+    <AutoSkipTime>k__BackingField: 0
+    <Skippable>k__BackingField: 1
+  - <MoodImage>k__BackingField: {fileID: 21300000, guid: 08ce53860c895df44a41ffd0acb6b62a, type: 3}
+    <Text>k__BackingField: Ah! Introductions, of course! Where are my manners? I
+      am Professor Pup. E.Leon! Butterfly specialist, part-time gardener and friend
+      to all that flutter! -player clicks- l've spent decades learning their ways,
+      their favourite things, their little habits. You see, butterflies are quite
+      picky tenants!
+    <CharacterTime>k__BackingField: 0.02
+    <AutoSkip>k__BackingField: 0
+    <AutoSkipTime>k__BackingField: 0
+    <Skippable>k__BackingField: 1
+  - <MoodImage>k__BackingField: {fileID: 21300000, guid: 6aa1fe816baf78c4aa30024fe44b835b, type: 3}
+    <Text>k__BackingField: 'This is why I have opened this place! A little safe haven
+      for our winged friends! Dare I say, a rather charming social club. But keeping
+      them here is quite a challenge. '
+    <CharacterTime>k__BackingField: 0.02
+    <AutoSkip>k__BackingField: 0
+    <AutoSkipTime>k__BackingField: 0
+    <Skippable>k__BackingField: 1
 --- !u!114 &364371348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2107,6 +2207,99 @@ MonoBehaviour:
   Parameter: SoundToggle
   TriggerEvent: 0
   Value: 0
+--- !u!114 &364371351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364371336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -761482679
+      Data2: 1161141605
+      Data3: -1341388124
+      Data4: 1028180001
+    Path: event:/Music
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &364371352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364371336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 320617410
+      Data2: 1294920212
+      Data3: 1483774104
+      Data4: -2088720473
+    Path: event:/Ambiences/AMB_Main
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &364371353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364371336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 738258809
+      Data2: 1176953814
+      Data3: -904525392
+      Data4: 1958205798
+    Path: event:/UI/UI_Prof_Talk
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &377718907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,6 +2312,7 @@ GameObject:
   - component: {fileID: 377718911}
   - component: {fileID: 377718910}
   - component: {fileID: 377718909}
+  - component: {fileID: 377718912}
   m_Layer: 5
   m_Name: Close Button
   m_TagString: Untagged
@@ -2241,6 +2435,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377718907}
   m_CullTransparentMesh: 1
+--- !u!114 &377718912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377718907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1579317652
+      Data2: 1169803479
+      Data3: -2121949801
+      Data4: 572044411
+    Path: event:/UI/UI_Button_Basic
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -7379,6 +7604,7 @@ GameObject:
   - component: {fileID: 499074664}
   - component: {fileID: 499074663}
   - component: {fileID: 499074662}
+  - component: {fileID: 499074665}
   m_Layer: 5
   m_Name: Credits Button
   m_TagString: Untagged
@@ -7500,6 +7726,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499074660}
   m_CullTransparentMesh: 1
+--- !u!114 &499074665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499074660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1098780810
+      Data2: 1341206612
+      Data3: -175849081
+      Data4: 70342613
+    Path: event:/UI/UI_Button_Large
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &595869944
 GameObject:
   m_ObjectHideFlags: 0
@@ -8789,7 +9046,7 @@ Transform:
   m_GameObject: {fileID: 912554992}
   serializedVersion: 2
   m_LocalRotation: {x: -0.4252743, y: -0.10463764, z: -0.049574785, w: 0.89762753}
-  m_LocalPosition: {x: 4.274, y: -5.41, z: -10.442}
+  m_LocalPosition: {x: 4.529, y: -4.502, z: -11.522}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8913,6 +9170,7 @@ GameObject:
   - component: {fileID: 914600376}
   - component: {fileID: 914600375}
   - component: {fileID: 914600378}
+  - component: {fileID: 914600379}
   m_Layer: 5
   m_Name: Start Game Button
   m_TagString: Untagged
@@ -9056,6 +9314,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &914600379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914600373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1098780810
+      Data2: 1341206612
+      Data3: -175849081
+      Data4: 70342613
+    Path: event:/UI/UI_Button_Large
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &928286317
 GameObject:
   m_ObjectHideFlags: 0
@@ -9204,6 +9493,7 @@ GameObject:
   - component: {fileID: 953012737}
   - component: {fileID: 953012736}
   - component: {fileID: 953012735}
+  - component: {fileID: 953012738}
   m_Layer: 5
   m_Name: Volume Button
   m_TagString: Untagged
@@ -9274,7 +9564,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 953012736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 364371342}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: ToggleVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &953012736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9313,6 +9615,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953012733}
   m_CullTransparentMesh: 1
+--- !u!114 &953012738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953012733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1579317652
+      Data2: 1169803479
+      Data3: -2121949801
+      Data4: 572044411
+    Path: event:/UI/UI_Button_Basic
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1014727803
 GameObject:
   m_ObjectHideFlags: 0
@@ -9863,6 +10196,7 @@ GameObject:
   - component: {fileID: 1100148960}
   - component: {fileID: 1100148959}
   - component: {fileID: 1100148958}
+  - component: {fileID: 1100148961}
   m_Layer: 5
   m_Name: Quit Game Button
   m_TagString: Untagged
@@ -9984,6 +10318,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100148956}
   m_CullTransparentMesh: 1
+--- !u!114 &1100148961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100148956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1098780810
+      Data2: 1341206612
+      Data3: -175849081
+      Data4: 70342613
+    Path: event:/UI/UI_Button_Large
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1121176552
 GameObject:
   m_ObjectHideFlags: 0
@@ -10247,6 +10612,7 @@ GameObject:
   - component: {fileID: 1158671652}
   - component: {fileID: 1158671651}
   - component: {fileID: 1158671650}
+  - component: {fileID: 1158671653}
   m_Layer: 5
   m_Name: Back To Main Menu Button
   m_TagString: Untagged
@@ -10368,6 +10734,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158671648}
   m_CullTransparentMesh: 1
+--- !u!114 &1158671653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158671648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1098780810
+      Data2: 1341206612
+      Data3: -175849081
+      Data4: 70342613
+    Path: event:/UI/UI_Button_Large
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1164447897
 GameObject:
   m_ObjectHideFlags: 0
@@ -11670,6 +12067,7 @@ GameObject:
   - component: {fileID: 1538853178}
   - component: {fileID: 1538853177}
   - component: {fileID: 1538853176}
+  - component: {fileID: 1538853179}
   m_Layer: 5
   m_Name: Pause Button
   m_TagString: Untagged
@@ -11791,6 +12189,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538853174}
   m_CullTransparentMesh: 1
+--- !u!114 &1538853179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538853174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -18807970
+      Data2: 1272905105
+      Data3: 1668458901
+      Data4: -910128693
+    Path: event:/UI/UI_Button_Pause
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1560039373
 GameObject:
   m_ObjectHideFlags: 0
@@ -13491,6 +13920,38 @@ Transform:
   - {fileID: 912554993}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2081424134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2081424135}
+  m_Layer: 0
+  m_Name: Ambience Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2081424135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081424134}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.087553, y: 2.0777142, z: -9.29849}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 353872913}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2121437635
 GameObject:
   m_ObjectHideFlags: 0
@@ -13503,6 +13964,7 @@ GameObject:
   - component: {fileID: 2121437639}
   - component: {fileID: 2121437638}
   - component: {fileID: 2121437637}
+  - component: {fileID: 2121437640}
   m_Layer: 5
   m_Name: Resume Button
   m_TagString: Untagged
@@ -13624,6 +14086,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121437635}
   m_CullTransparentMesh: 1
+--- !u!114 &2121437640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121437635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1098780810
+      Data2: 1341206612
+      Data3: -175849081
+      Data4: 70342613
+    Path: event:/UI/UI_Button_Large
+  Event: 
+  EventPlayTrigger: 19
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &176812062739291460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14239,3 +14732,4 @@ SceneRoots:
   - {fileID: 1244220611}
   - {fileID: 2027721240}
   - {fileID: 1272313265}
+  - {fileID: 2081424135}
